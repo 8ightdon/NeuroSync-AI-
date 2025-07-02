@@ -29,7 +29,8 @@ Frontend (React + Tailwind) <-> FastAPI Backend <-> Model Inference (HuggingFace
 - Fine-tune models via Hugging Face scripts
 
 ## License
-MIT
+
+This project is licensed under the MIT License (c) 2024 Elias Derick Orwa. See the LICENSE file for details.
 
 ---
 
@@ -42,3 +43,6 @@ MIT
 
 ## Contact
 Open-source project. Contributions welcome!
+
+MIT License © 2024 Elias Derick Orwa
+[View License]
