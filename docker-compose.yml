@@ -1,0 +1,45 @@
+version: '3.8'
+services:
+  backend:
+    build: ./backend
+    container_name: neurosync-backend
+    env_file:
+      - ../.env
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+      - chroma
+
+  frontend:
+    build: ./frontend
+    container_name: neurosync-frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+
+  db:
+    image: postgres:15
+    container_name: neurosync-db
+    restart: always
+    environment:
+      POSTGRES_USER: neurosync
+      POSTGRES_PASSWORD: neurosync
+      POSTGRES_DB: neurosync
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+  chroma:
+    image: chromadb/chroma:latest
+    container_name: neurosync-chroma
+    ports:
+      - "8001:8000"
+    volumes:
+      - chroma_data:/chroma/.chroma/index
+
+volumes:
+  db_data:
+  chroma_data: 
